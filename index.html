@@ -6,7 +6,7 @@
       content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
       name="viewport"
     />
-    <title>我的小可爱 - 美君宝贝</title>
+    <title>我的小可爱 - 美君宝贝 cy love mj</title>
   </head>
 
   <script src="js/lib/jquery.min.js" type="text/javascript"></script>
@@ -61,7 +61,7 @@
     }
 
     .btn-groups {
-      padding-right: 20px;
+      /* padding-right: 20px; */
       text-align: center;
     }
 
@@ -99,6 +99,9 @@
 
     .btn-b {
       background: #c9c9c9;
+    }
+    .btn-c {
+      background-color: #be1a25;
     }
 
     .btn-a:before {
@@ -153,6 +156,32 @@
       border-top-right-radius: 60px;
     }
 
+    .btn-c:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 60px;
+      background: #be1a25;
+      left: -29px;
+      top: 0;
+      border-top-left-radius: 60px;
+      border-bottom-left-radius: 60px;
+    }
+
+    .btn-c:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 30px;
+      background: #be1a25;
+      left: 0;
+      top: -29px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+    }
+
     .container .mask {
       position: absolute;
       top: 0;
@@ -200,9 +229,9 @@
       color: rgba(255, 255, 255, 0.85);
       font-weight: bold;
       position: absolute;
-      left: 25%;
+      left: 10%;
       z-index: 9999;
-      width: 50%;
+      width: 80%;
       text-align: center;
     }
 
@@ -265,16 +294,19 @@
     function F() {
       modal("跟我走吧", G);
     }
-
     function G() {
-      modal("我会做饭 会做家务", I);
+      modal("我会做饭 会做家务 会照顾宝宝", H);
     }
 
     function H() {
-      modal("爱你 么么哒！", J);
+      modal("爱你 么么哒！", I);
     }
 
     function I() {
+      modal("这辈子只会爱宝宝一个人", J);
+    }
+
+    function J() {
       modal("行，我们去民政局登记吧", function () {
         typeWrite();
         fireworks();
@@ -340,6 +372,10 @@
           });
       }
     }
+
+    function goLove() {
+      window.location.href = "./love2.html";
+    }
   </script>
   <body>
     <div class="share_img"><img src="images/a8b.png" alt="" /></div>
@@ -359,6 +395,11 @@
         </div>
         <div id="no" class="btn btn-b" onclick="toggleSound()">
           <span>不愿意</span>
+        </div>
+        <div class="heart-btn">
+          <div id="heart-btn" class="btn btn-c" onclick="goLove()">
+            <span>告白</span>
+          </div>
         </div>
       </div>
     </div>
