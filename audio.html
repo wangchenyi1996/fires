@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wcy love wmj</title>
+  </head>
+  <body>
+    <button onclick="record()">开始录音</button>
+    <script>
+      function beginRecord(mediaStream) {
+        let audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        let mediaNode = audioContext.createMediaStreamSource(mediaStream);
+        console.log(mediaNode);
+        // 这里connect之后就会自动播放了
+        mediaNode.connect(audioContext.destination);
+      }
+      function record() {
+        window.navigator.mediaDevices
+          .getUserMedia({
+            audio: true,
+          })
+          .then((mediaStream) => {
+            console.log(mediaStream);
+            beginRecord(mediaStream);
+          })
+          .catch((err) => {
+            // 如果用户电脑没有麦克风设备或者用户拒绝了，或者连接出问题了等
+            // 这里都会抛异常，并且通过err.name可以知道是哪种类型的错误
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>

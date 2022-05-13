@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+		<style type="text/css">
+		
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				position: relative;
+				margin: 0;
+				padding: 0;
+				background-color:pink;
+			}
+
+			#Box{
+				animation:fade 0.6s linear;
+				transform-origin: 100% 50%;
+				background-color: rgba(255,255,0,.0); 
+				position: absolute;
+			}
+			#loveBox{
+				width: 30px;
+				height:30px;
+				/*
+				width 和 height必须一致，并且点击出现爱心的位置会根据具体情况而改变
+				40px 对应JS中写上 ：
+					love.style.left = (e.clientX-19)+'px';
+					love.style.top = (e.clientY-47)+'px';
+				30px对应：
+					love.style.left = (e.clientX-15)+'px';
+					love.style.top = (e.clientY-35)+'px';
+				20px对应：
+					love.style.left = (e.clientX-9)+'px';
+					love.style.top = (e.clientY-23)+'px';
+				*/
+				position: relative;
+				border-radius: 12%;
+				overflow: hidden;
+				transform: rotateZ(-45deg);		
+			}
+			#zheng{
+				width: 50%;
+				height: 50%;
+				background-color: red;/*爱心的颜色可以根据需要进行修改*/
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			div[id^="yuan"]{
+				width: 50%;
+				height: 50%;
+				background-color: red;
+				position: absolute;
+				border-radius: 50%;	
+			}
+			#yuan1{
+				top:25%
+			}
+			#yuan2{
+				bottom: 0;
+				right:26%
+			}
+			@keyframes fade{
+				0%{}
+				100%{
+					transform: translateY(-70px);
+					opacity: 0;
+				}
+			}
+				
+		</style>
+		
+		</head>
+	<body>
+		<div id="end">	
+		<script type="text/javascript">
+			document.onclick = function(e){
+				console.log("点击了屏幕", e.clientX,e.clientY);    
+				let love = document.createElement("div");
+				love.setAttribute("id","Box");
+				love.innerHTML=
+				`<div id="loveBox">
+					<div id="zheng"></div>
+					<div id="yuan1"></div>
+					<div id="yuan2"></div>
+				</div>`
+				love.style.left = (e.clientX-15)+'px';
+				love.style.top = (e.clientY-35)+'px';
+				let end = document.getElementById("end");
+				document.body.insertBefore(love, end);
+				setTimeout(function(){
+					love.remove()
+				},500)
+			}
+		</script>
+				
+	</body>
+</html>
