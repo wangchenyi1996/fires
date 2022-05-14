@@ -62,6 +62,33 @@
         -webkit-text-fill-color: transparent;
       }
     </style>
+    <script>
+      function toggleSound2() {
+        const music = document.getElementById("vd2"); //获取ID
+        music.volume = 0.25;
+        const promise = music.play();
+        if (promise !== undefined) {
+          promise
+            .then(() => {
+              console.log("--播放成功--");
+              music.play();
+            })
+            .catch(() => {
+              console.log("--播放失败--");
+            });
+        }
+      }
+      window.addEventListener("click", () => {
+        toggleSound2();
+      });
+      window.addEventListener("touchstart", () => {
+        toggleSound2();
+      });
+
+      // window.setTimeout(() => {
+      //   toggleSound2();
+      // }, 3000);
+    </script>
   </head>
   <body>
     <div id="code">
@@ -94,6 +121,8 @@
       <br />
     </div>
     <h1 id="h1"></h1>
+
+    <audio src="./audio/love.mp3" id="vd2" autoplay loop></audio>
 
     <!--canvas 画布-->
     <canvas></canvas>
